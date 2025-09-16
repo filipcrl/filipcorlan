@@ -5,9 +5,9 @@
 #
 #=========================================================================================
 
-base_url = "https://example.com"
-title = "xxxx"
-description = "xxxx xxxx xxxx"
+base_url = "https://filipcorlan.com"
+title = "Filip Corlan"
+description = "Personal page of Filip Corlan"
 default_language = "en"
 theme = "serene"
 output_dir = "public"
@@ -15,7 +15,7 @@ compile_sass = true
 minify_html = false # Keep this false, as it may cause issues with some styles
 build_search_index = false # Keep this false, search is temporarily unsupported
 generate_feeds = false # Whether to generate a feed file in root, read docs for more info about rss feed
-feed_filenames = ["feed.xml"] # "feed.xml" | "atom.xml" | "rss.xml", read docs for more info
+feed_filenames = [] # "feed.xml" | "atom.xml" | "rss.xml", read docs for more info
 taxonomies = [{ name = "tags" }, { name = "categories" }]
 
 [markdown]
@@ -42,7 +42,7 @@ anchors = "on"
 [extra]
 
 sections = [
-  { name = "posts", path = "/posts", is_external = false },
+  # { name = "posts", path = "/posts", is_external = false },
   # { name = "tags", path = "/tags", is_external = false },
   # { name = "github", path = "https://github.com/<your-username>", is_external = true },
 ]
