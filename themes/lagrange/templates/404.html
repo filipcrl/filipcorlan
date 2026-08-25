@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="page not-found">
+    <h1 class="page-title">404: Page not found</h1>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/SIaFtAKnqBU?autoplay=1&amp;start=3" title="404" allowfullscreen></iframe></div>
+    <h1>Ahhhhh!</h1>
+    <p class="lead">Sorry, that URL does not exist. <a href="{{ get_url(path='/') }}">Head back home</a> or browse the <a href="{{ get_url(path='/posts') }}">articles page</a>.</p>
+  </div>
+{% endblock content %}

@@ -1,0 +1,7 @@
+{% for item in config.extra.social %}
+  {% if item.url is starting_with("/") %}
+    <a href="{{ get_url(path=item.url) }}" aria-label="{{ item.name }}"><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>
+  {% else %}
+    <a href="{{ item.url }}" aria-label="{{ item.name }}"{% if item.url is starting_with("http") %} target="_blank" rel="noopener noreferrer"{% endif %}><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>
+  {% endif %}
+{% endfor %}

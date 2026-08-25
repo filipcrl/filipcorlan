@@ -1,0 +1,20 @@
+{% macro reading_time(item) %}
+  {%- if item.word_count < 180 -%}
+    less than 1 minute read
+  {%- elif item.word_count < 360 -%}
+    1 minute read
+  {%- else -%}
+    {{ item.word_count / 180 | round(method="floor") }} minute read
+  {%- endif -%}
+{% endmacro reading_time %}
+
+{% macro post_date(page) %}
+  {% set day = page.date | date(format="%-d") %}
+  <span class="post-date">
+    {{ config.extra.post_date_prefix }}
+    {{ page.date | date(format="%B") }}
+    {{ day }}{% if day == "1" or day == "21" or day == "31" %}st{% elif day == "2" or day == "22" %}nd{% elif day == "3" or day == "23" %}rd{% else %}th{% endif %},
+    {{ page.date | date(format="%Y") }} by
+    {% if page.authors %}{{ page.authors | first }}{% else %}{{ config.author }}{% endif %}
+  </span>
+{% endmacro post_date %}

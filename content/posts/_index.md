@@ -2,22 +2,9 @@
 title = "Articles"
 description = "Articles by Filip Corlan"
 sort_by = "date"
-template = "blog.html"
+template = "section.html"
 page_template = "post.html"
+paginate_by = 5
+paginate_path = "page"
 insert_anchor_links = "right"
-
-[extra]
-lang = "en"
-title = "Articles"
-subtitle = "Notes, projects, and things I have learned."
-date_format = "%b %-d, %Y"
-categorized = false
-back_to_top = true
-toc = true
-comment = false
-copy = true
-outdate_alert = false
-outdate_alert_days = 120
-outdate_alert_text_before = "This article was last updated "
-outdate_alert_text_after = " days ago and may be out of date."
 +++

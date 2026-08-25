@@ -8,15 +8,7 @@ categories = ["Projects"]
 tags = ["web", "design"]
 
 [extra]
-lang = "en"
-toc = true
-comment = false
-copy = true
-featured = false
-math = false
-mermaid = false
-reaction = false
-og_image = "cover.svg"
+image = "cover.svg"
 +++
 
 A personal site works best when it has a clear purpose. It does not need to

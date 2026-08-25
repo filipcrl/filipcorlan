@@ -1,0 +1,57 @@
+.posts-container {
+  margin-bottom: 5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.thumbnail-container {
+  max-width: 100%;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.thumbnail-container img {
+  display: block;
+  width: 100%;
+  margin-top: -11.5%;
+  margin-bottom: -11.5%;
+}
+
+.pagination {
+  display: flex;
+  overflow: hidden;
+  font-family: $sans-serif-font-family;
+  text-align: center;
+}
+
+.pagination a {
+  text-decoration: none;
+}
+
+.pagination-button {
+  display: inline-block;
+  flex: 1;
+  padding: 15px 20px;
+  border: 1px solid $pagination-button-color;
+  color: $light-gray-color;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.pagination-active {
+  color: $link-color;
+}
+
+.pagination-active:hover,
+.pagination-active:focus-visible {
+  background-color: $pagination-button-color;
+}
+
+.archive-list li:not(.archive-year) {
+  margin-bottom: 1.25rem;
+}
+
+.archive-list .archive-year {
+  margin-top: 2.5rem;
+}

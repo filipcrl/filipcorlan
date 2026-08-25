@@ -1,0 +1,30 @@
+code,
+pre {
+  font-family: $code-font-family;
+}
+
+code {
+  padding: 0.25em 0.5em;
+  border-radius: 3px;
+  background-color: $code-background-color;
+  font-size: 0.8rem;
+}
+
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  overflow-x: auto;
+  background-color: $code-background-color;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  white-space: pre;
+}
+
+pre code {
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+  font-size: 100%;
+}

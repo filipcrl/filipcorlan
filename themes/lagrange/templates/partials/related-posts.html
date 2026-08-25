@@ -1,0 +1,21 @@
+{% if page.taxonomies.tags is defined %}
+  {% set posts = get_section(path=config.extra.posts_section) %}
+  {% set_global related_count = 0 %}
+  <div class="related">
+    <h1>{{ config.extra.related_posts }}</h1>
+    <ul class="related-posts">
+      {% for candidate in posts.pages %}
+        {% set_global tag_matches = false %}
+        {% if candidate.permalink != page.permalink and candidate.taxonomies.tags is defined %}
+          {% for tag in page.taxonomies.tags %}
+            {% if candidate.taxonomies.tags is containing(tag) %}{% set_global tag_matches = true %}{% endif %}
+          {% endfor %}
+        {% endif %}
+        {% if tag_matches and related_count < 3 %}
+          <li><h3><a href="{{ candidate.permalink }}">{{ candidate.title }}</a></h3></li>
+          {% set_global related_count = related_count + 1 %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

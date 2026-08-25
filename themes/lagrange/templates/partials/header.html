@@ -1,0 +1,21 @@
+<header class="header">
+  <h3 class="header-title">
+    <a href="{{ get_url(path='/') }}">{{ config.title }}</a>
+    <small><a class="header-subtitle" href="mailto:filip.corlan@gmail.com">filip.corlan@gmail.com</a></small>
+  </h3>
+  {% if config.extra.header_bio %}<p class="header-bio">{{ config.extra.header_bio }}</p>{% endif %}
+  <div class="menu">
+    <nav class="menu-content" aria-label="Main navigation">
+      {% for item in config.extra.menu %}
+        {% if item.url is starting_with("http://") or item.url is starting_with("https://") %}
+          <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.name }}</a>
+        {% else %}
+          <a href="{{ get_url(path=item.url) }}">{{ item.name }}</a>
+        {% endif %}
+      {% endfor %}
+    </nav>
+    <nav class="social-icons" aria-label="Social links">
+      {% include "partials/social-icons.html" %}
+    </nav>
+  </div>
+</header>

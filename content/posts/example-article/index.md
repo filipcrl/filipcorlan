@@ -1,6 +1,6 @@
 +++
 title = "Example Article"
-description = "An example showing how to structure an article with Zola and Serene."
+description = "An example showing how to structure an article with Zola and Lagrange."
 date = 2026-08-25
 
 [taxonomies]
@@ -8,23 +8,15 @@ categories = ["Notes"]
 tags = ["zola", "example"]
 
 [extra]
-lang = "en"
-toc = true
-comment = false
-copy = true
-featured = false
-math = false
-mermaid = false
-reaction = false
-og_image = "cover.svg"
+image = "cover.svg"
 +++
 
 This is an example article. Replace this text with your own introduction.
 
 ## Adding sections
 
-Use Markdown headings to organize an article. Serene can generate a table of
-contents from these headings when `toc = true` is set in the front matter.
+Use Markdown headings to organize an article. Zola generates stable heading
+anchors that can be linked directly.
 
 ## Adding an image
 

@@ -1,0 +1,31 @@
+name = "lagrange"
+description = "A minimalist blog theme ported from Lagrange to Zola"
+license = "MIT"
+homepage = "https://github.com/LeNPaul/Lagrange"
+min_version = "0.22.1"
+
+[author]
+name = "Paul Le"
+homepage = "https://github.com/LeNPaul"
+
+[original]
+author = "Paul Le"
+homepage = "https://github.com/LeNPaul/Lagrange"
+repo = "https://github.com/LeNPaul/Lagrange"
+
+[extra]
+menu = []
+social = []
+posts_section = "posts/_index.md"
+header_bio = ""
+older_page = "Older"
+newer_page = "Newer"
+read_more = "Read more"
+post_date_prefix = "Written on"
+sharing_button_prompt = "Feel free to share!"
+related_posts = "You may also enjoy:"
+hide_post_date = false
+hide_post_share = false
+hide_related_posts = false
+disqus_shortname = ""
+google_analytics_id = ""

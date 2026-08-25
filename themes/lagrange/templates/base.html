@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="{{ lang | default(value=config.default_language) }}">
+  {% include "partials/head.html" %}
+  <body>
+    <div class="container">
+      {% include "partials/header.html" %}
+      <main class="content-container">
+        {% block content %}{% endblock content %}
+      </main>
+      {% include "partials/footer.html" %}
+    </div>
+  </body>
+</html>

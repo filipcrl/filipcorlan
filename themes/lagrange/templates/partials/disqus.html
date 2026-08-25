@@ -1,0 +1,18 @@
+{% if config.extra.disqus_shortname %}
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = '{{ page.permalink }}';
+      this.page.identifier = '{{ page.path }}';
+    };
+    (function() {
+      var script = document.createElement('script');
+      script.src = 'https://{{ config.extra.disqus_shortname }}.disqus.com/embed.js';
+      script.setAttribute('data-timestamp', +new Date());
+      (document.head || document.body).appendChild(script);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+</section>
+{% endif %}

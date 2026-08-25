@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "macros/meta.html" as meta %}
+
+{% block content %}
+  <h1>{{ section.title }}</h1>
+  {% if section.content %}<article>{{ section.content | safe }}</article>{% endif %}
+  <ul class="posts-container archive-list">
+    {% set_global post_list = section.pages %}
+    {% if paginator is defined %}{% set_global post_list = paginator.pages %}{% endif %}
+    {% set_global current_year = "" %}
+    {% for post in post_list %}
+      {% set year = post.date | date(format="%Y") %}
+      {% if year != current_year %}<li class="archive-year"><h3>{{ year }}</h3></li>{% set_global current_year = year %}{% endif %}
+      <li>
+        <a href="{{ post.permalink }}">{{ post.title }}</a>
+        <p class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date(format="%B %-d") }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {{ meta::reading_time(item=post) }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% if paginator is defined %}
+    <nav class="pagination" aria-label="Pagination">
+      {% if paginator.next %}<a class="pagination-button pagination-active" href="{{ paginator.next }}">{{ config.extra.older_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.older_page }}</span>{% endif %}
+      {% if paginator.previous %}<a class="pagination-button pagination-active" href="{{ paginator.previous }}">{{ config.extra.newer_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.newer_page }}</span>{% endif %}
+    </nav>
+  {% endif %}
+{% endblock content %}
