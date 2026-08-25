@@ -1,6 +1,6 @@
 +++
 title = "Projects"
-description = "Projects by Filip Corlan"
+description = "My Projects"
 sort_by = "date"
 template = "section.html"
 page_template = "post.html"

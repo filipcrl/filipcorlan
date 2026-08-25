@@ -8,7 +8,7 @@ categories = ["Notes"]
 tags = ["zola", "example"]
 
 [extra]
-image = "cover.svg"
+image = "cover.png"
 +++
 
 This is an example article. Replace this text with your own introduction.

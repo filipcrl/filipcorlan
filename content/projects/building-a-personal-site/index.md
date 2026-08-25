@@ -8,7 +8,7 @@ categories = ["Projects"]
 tags = ["web", "design"]
 
 [extra]
-image = "cover.svg"
+image = "cover.png"
 +++
 
 A personal site works best when it has a clear purpose. It does not need to
