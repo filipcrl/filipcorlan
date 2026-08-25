@@ -11,7 +11,7 @@
       {% set year = post.date | date(format="%Y") %}
       {% if year != current_year %}<li class="archive-year"><h3>{{ year }}</h3></li>{% set_global current_year = year %}{% endif %}
       <li>
-        <a href="{{ post.permalink }}">{{ post.title }}</a>
+        <a href="{{ post.path | safe }}">{{ post.title }}</a>
         <p class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date(format="%B %-d") }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {{ meta::reading_time(item=post) }}</p>
       </li>
     {% endfor %}

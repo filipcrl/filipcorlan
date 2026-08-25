@@ -7,11 +7,11 @@
     {% if page.extra.image is starting_with("http://") or page.extra.image is starting_with("https://") or page.extra.image is starting_with("//") %}
       {% set image_url = page.extra.image %}
     {% elif page.extra.image is starting_with("/") %}
-      {% set image_url = get_url(path=page.extra.image) %}
+      {% set image_url = page.extra.image %}
     {% else %}
-      {% set image_url = get_url(path=page.colocated_path ~ page.extra.image) %}
+      {% set image_url = "/" ~ page.colocated_path ~ page.extra.image %}
     {% endif %}
-    <img class="post-image" src="{{ image_url }}" alt="">
+    <img class="post-image" src="{{ image_url | safe }}" alt="">
   {% endif %}
   <article>{{ page.content | safe }}</article>
   {% if not config.extra.hide_post_date %}{{ meta::post_date(page=page) }}{% endif %}

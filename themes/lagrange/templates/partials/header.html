@@ -1,6 +1,6 @@
 <header class="header">
   <h3 class="header-title">
-    <a href="{{ get_url(path='/') }}">{{ config.title }}</a>
+    <a href="/">{{ config.title }}</a>
     <small><a class="header-subtitle" href="mailto:filip.corlan@gmail.com">filip.corlan@gmail.com</a></small>
   </h3>
   {% if config.extra.header_bio %}<p class="header-bio">{{ config.extra.header_bio }}</p>{% endif %}
@@ -10,7 +10,7 @@
         {% if item.url is starting_with("http://") or item.url is starting_with("https://") %}
           <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.name }}</a>
         {% else %}
-          <a href="{{ get_url(path=item.url) }}">{{ item.name }}</a>
+          <a href="{{ item.url | safe }}">{{ item.name }}</a>
         {% endif %}
       {% endfor %}
     </nav>

@@ -12,7 +12,7 @@
       {% set year = post.date | date(format="%Y") %}
       {% if year != current_year %}<li class="archive-year"><h3>{{ year }}</h3></li>{% set_global current_year = year %}{% endif %}
       <li>
-        <a href="{{ post.permalink }}">{{ post.title }}</a>
+        <a href="{{ post.path | safe }}">{{ post.title }}</a>
         <p class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date(format="%B %-d") }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {{ meta::reading_time(item=post) }}</p>
       </li>
     {% endfor %}
@@ -20,8 +20,8 @@
   {% if paginator is defined %}
     {% if paginator.next or paginator.previous %}
       <nav class="pagination" aria-label="Pagination">
-        {% if paginator.next %}<a class="pagination-button pagination-active" href="{{ paginator.next }}">{{ config.extra.older_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.older_page }}</span>{% endif %}
-        {% if paginator.previous %}<a class="pagination-button pagination-active" href="{{ paginator.previous }}">{{ config.extra.newer_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.newer_page }}</span>{% endif %}
+        {% if paginator.next %}<a class="pagination-button pagination-active" href="{{ paginator.next | replace(from=config.base_url, to='') | safe }}">{{ config.extra.older_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.older_page }}</span>{% endif %}
+        {% if paginator.previous %}<a class="pagination-button pagination-active" href="{{ paginator.previous | replace(from=config.base_url, to='') | safe }}">{{ config.extra.newer_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.newer_page }}</span>{% endif %}
       </nav>
     {% endif %}
   {% endif %}
