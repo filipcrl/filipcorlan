@@ -1,0 +1,222 @@
+{% import "macros/seo.html" as seo %}
+{% extends "_base.html" %}
+
+{% block page %}homepage{% endblock page%}
+{% block lang %}{% if section.extra.lang %}{{ section.extra.lang }}{% else %}{{ section.lang }}{% endif %}{% endblock lang %}
+{% block title %}{{ config.title }}{% endblock title %}
+{% block desc %}
+  {%- if section.extra.lang %}{% set og_lang = section.extra.lang %}{% else %}{% set og_lang = section.lang %}{% endif -%}
+  {{ seo::seo(
+      title=config.title,
+      desc=config.description,
+      url=get_url(path="/"),
+      lang=og_lang
+  ) }}
+{% endblock desc %}
+
+{% block head %}
+{% if config.markdown.highlighting.style == "class" %}
+  {% if config.extra.force_theme == "dark" %}
+    <link id="hl" rel="stylesheet" type="text/css" href="{{ get_url(path='giallo-dark.css') }}" />
+  {% else %}
+    <link id="hl" rel="stylesheet" type="text/css" href="{{ get_url(path='giallo-light.css') }}" />
+  {% endif %}
+{% endif %}
+<style>
+  body.homepage .post-previews {
+    margin-top: 4.5rem;
+    padding: 0 15px;
+  }
+
+  body.homepage .post-previews-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+
+  body.homepage .post-previews-header h2 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  body.homepage .post-previews-header a {
+    color: var(--text-pale-color);
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+
+  body.homepage .post-previews-header a:hover {
+    color: var(--primary-color);
+  }
+
+  body.homepage .post-preview {
+    display: block;
+    margin-bottom: 3.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  body.homepage .post-preview-cover {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, var(--primary-decoration-color), transparent 60%),
+      var(--primary-pale-color);
+  }
+
+  body.homepage .post-preview-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 350ms ease;
+  }
+
+  body.homepage .post-preview:hover .post-preview-cover img {
+    transform: scale(1.015);
+  }
+
+  body.homepage .post-preview-meta {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  body.homepage .post-preview h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1.35rem;
+    line-height: 1.35;
+  }
+
+  body.homepage .post-preview time {
+    flex: none;
+    color: var(--text-pale-color);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  body.homepage .post-preview p {
+    margin: 0.5rem 0 0;
+    color: var(--text-pale-color);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    body.homepage .post-previews {
+      margin-top: 3rem;
+    }
+
+    body.homepage .post-preview {
+      margin-bottom: 2.75rem;
+    }
+
+    body.homepage .post-preview-meta {
+      display: block;
+    }
+
+    body.homepage .post-preview time {
+      display: block;
+      margin-top: 0.35rem;
+    }
+
+    body.homepage .post-preview h3 {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+{% endblock head %}
+
+{% block content %}
+<div id="wrapper">
+  <main>
+    <section id="info">
+      {% if section.extra.avatar %}
+      <img src="{{ get_url(path=section.extra.avatar) }}" alt="{{ section.extra.name }}">
+      {% endif %}
+      <div id="text">
+        <div>
+          <span id="name">{{ section.extra.name }}</span>
+          {% if section.extra.id %}
+          <span id="id">@{{ section.extra.id }}</span>
+          {% endif %}
+        </div>
+        {% if section.extra.bio %}
+        <div id="bio">{{ section.extra.bio }}</div>
+        {% endif %}
+      </div>
+    </section>
+    <section id="links">
+      <div id="left">
+        {% for nav_item in config.extra.sections %}
+        <a {% if nav_item.is_external %}href="{{ nav_item.path }}" target="_blank" rel="noreferrer noopener"{% else %}href="{{ get_url(path=nav_item.path) }}" class="instant"{% endif %}>{{ nav_item.name }}</a>
+        {% endfor %}
+      </div>
+      <div id="right">
+        {% for link in section.extra.links %}
+        <a href="{{ link.url }}" aria-label="{{ link.name }}" target="_blank" rel="noreferrer noopener{% if link.rel_me %} me{% endif %}">
+          {% set icon_path = "icon/" ~ link.icon ~ ".svg" %}
+          {% set icon = load_data(path=icon_path) %}
+          {{ icon | safe }}
+        </a>
+        {% endfor %}
+        {% if not section.extra.footer and not config.extra.force_theme %}
+        {% set moon_icon = load_data(path="icon/moon.svg") %}
+        {% set sun_icon = load_data(path="icon/sun.svg") %}
+        <button id="theme-toggle" aria-label="theme switch">
+          <span class="moon-icon">{{ moon_icon | safe }}</span>
+          <span class="sun-icon">{{ sun_icon | safe }}</span>
+        </button>
+        {% endif %}
+      </div>
+    </section>
+    <section id="brief" class="prose">
+      {{ section.content | trim | safe }}
+    </section>
+    {% if section.extra.recent %}
+    {% set blog_section_path = config.extra.blog_section_path | trim_start_matches(pat="/") %}
+    {% set blog_section = get_section(path=blog_section_path ~ "/_index.md") %}
+    <section class="post-previews" aria-labelledby="latest-posts">
+      <div class="post-previews-header">
+        <h2 id="latest-posts">Latest posts</h2>
+        <a class="instant" href="{{ config.extra.blog_section_path }}">View all</a>
+      </div>
+      {% for post in blog_section.pages | slice(end=section.extra.recent_max) %}
+      <a class="post-preview instant" href="{{ post.permalink }}">
+        <article>
+          <div class="post-preview-cover">
+            {% if post.extra.og_image %}
+              {% if post.extra.og_image is starting_with("http://") or post.extra.og_image is starting_with("https://") or post.extra.og_image is starting_with("//") %}
+              <img src="{{ post.extra.og_image }}" alt="" loading="lazy">
+              {% elif post.extra.og_image is starting_with("/") %}
+              <img src="{{ get_url(path=post.extra.og_image) }}" alt="" loading="lazy">
+              {% else %}
+              <img src="{{ get_url(path=post.colocated_path ~ post.extra.og_image) }}" alt="" loading="lazy">
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="post-preview-meta">
+            <h3>{{ post.title }}</h3>
+            <time datetime="{{ post.date }}">{{ post.date | date(format=section.extra.date_format) }}</time>
+          </div>
+          {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+        </article>
+      </a>
+      {% endfor %}
+    </section>
+    {% endif %}
+  </main>
+  {% if section.extra.footer %}
+    {% include "_footer.html" %}
+  {% endif %}
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{{ get_url(path='js/lightense.min.js') }}"></script>
+{% endblock script %}
