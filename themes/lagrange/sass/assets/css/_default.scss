@@ -26,6 +26,7 @@
 }
 
 .header-subtitle {
+  margin-left: 4px;
   color: $light-gray-color;
 }
 
@@ -88,6 +89,10 @@
   font-size: 0.8rem;
 }
 
+.footer-description a {
+  padding: 0;
+}
+
 .video-container {
   position: relative;
   overflow: hidden;
@@ -116,14 +121,15 @@
   .header-subtitle {
     display: block;
     margin-top: 0.25rem;
+    margin-left: 0;
   }
 
   .social-icons {
-    float: left;
-    clear: left;
+    float: right;
+    clear: none;
   }
 
   .menu-content {
-    margin-bottom: 5px;
+    margin-bottom: 0;
   }
 }

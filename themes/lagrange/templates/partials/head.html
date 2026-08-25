@@ -1,7 +1,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page is defined %}{{ page.title }} | {{ config.title }}{% elif section is defined and section.title != "Home" %}{{ section.title }} | {{ config.title }}{% else %}{{ config.title }} | {{ config.description }}{% endif %}</title>
+  <link rel="icon" type="image/png" href="{{ get_url(path='favicon.png') }}">
+  <link rel="icon" href="{{ get_url(path='favicon.ico') }}" sizes="any">
+  <title>{% if current_path is defined and current_path == "/" and config.extra.homepage_title %}{{ config.extra.homepage_title }}{% elif page is defined %}{{ page.title }} | {{ config.title }}{% elif section is defined and section.title != "Home" %}{{ section.title }} | {{ config.title }}{% else %}{{ config.title }} | {{ config.description }}{% endif %}</title>
   <meta name="description" content="{% if page is defined and page.description %}{{ page.description }}{% elif section is defined and section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
   <link rel="canonical" href="{% if page is defined %}{{ page.permalink }}{% elif section is defined %}{{ section.permalink }}{% else %}{{ get_url(path='/') }}{% endif %}">
   <meta property="og:site_name" content="{{ config.title }}">

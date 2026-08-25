@@ -1,6 +1,6 @@
 base_url = "https://filipcorlan.com"
 title = "Filip Corlan"
-description = "Personal page of Filip Corlan"
+description = "Homepage"
 author = "Filip Corlan"
 default_language = "en"
 theme = "lagrange"
@@ -33,14 +33,14 @@ anchors = "on"
 
 [extra]
 menu = [
-  { name = "Articles", url = "/posts" },
+  { name = "Projects", url = "/projects" },
 ]
 social = [
   { name = "GitHub", icon = "github", url = "https://github.com/filipcrl" },
   { name = "LinkedIn", icon = "linkedin", url = "https://www.linkedin.com/in/filipcorlan" },
-  { name = "Email", icon = "envelope", url = "mailto:filip.corlan@gmail.com" },
 ]
-posts_section = "posts/_index.md"
+posts_section = "projects/_index.md"
+homepage_title = "Filip Corlan's Homepage"
 header_bio = "Master's student in Electrical Engineering at EPFL. Interested in FPGA, PCB and chip design, networking, functional programming, and compilers."
 older_page = "Older"
 newer_page = "Newer"
@@ -49,7 +49,7 @@ post_date_prefix = "Written on"
 sharing_button_prompt = "Feel free to share!"
 related_posts = "You may also enjoy:"
 hide_post_date = false
-hide_post_share = false
-hide_related_posts = false
+hide_post_share = true
+hide_related_posts = true
 disqus_shortname = ""
 google_analytics_id = ""

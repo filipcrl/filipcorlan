@@ -18,9 +18,11 @@
     {% endfor %}
   </ul>
   {% if paginator is defined %}
-    <nav class="pagination" aria-label="Pagination">
-      {% if paginator.next %}<a class="pagination-button pagination-active" href="{{ paginator.next }}">{{ config.extra.older_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.older_page }}</span>{% endif %}
-      {% if paginator.previous %}<a class="pagination-button pagination-active" href="{{ paginator.previous }}">{{ config.extra.newer_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.newer_page }}</span>{% endif %}
-    </nav>
+    {% if paginator.next or paginator.previous %}
+      <nav class="pagination" aria-label="Pagination">
+        {% if paginator.next %}<a class="pagination-button pagination-active" href="{{ paginator.next }}">{{ config.extra.older_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.older_page }}</span>{% endif %}
+        {% if paginator.previous %}<a class="pagination-button pagination-active" href="{{ paginator.previous }}">{{ config.extra.newer_page }}</a>{% else %}<span class="pagination-button">{{ config.extra.newer_page }}</span>{% endif %}
+      </nav>
+    {% endif %}
   {% endif %}
 {% endblock content %}

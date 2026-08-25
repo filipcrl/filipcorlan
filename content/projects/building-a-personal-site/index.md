@@ -31,7 +31,7 @@ This keeps the structure simple and gives every page a reason to exist.
 This post stores its cover beside the Markdown file:
 
 ```text
-content/posts/building-a-personal-site/
+content/projects/building-a-personal-site/
 ├── index.md
 └── cover.svg
 ```

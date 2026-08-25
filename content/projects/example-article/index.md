@@ -23,7 +23,7 @@ anchors that can be linked directly.
 Place an image beside this file, for example:
 
 ```text
-content/posts/example-article/
+content/projects/example-article/
 ├── index.md
 └── photo.webp
 ```

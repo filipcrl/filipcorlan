@@ -17,6 +17,7 @@ repo = "https://github.com/LeNPaul/Lagrange"
 menu = []
 social = []
 posts_section = "posts/_index.md"
+homepage_title = ""
 header_bio = ""
 older_page = "Older"
 newer_page = "Newer"
