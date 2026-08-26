@@ -2,7 +2,7 @@ name = "lagrange"
 description = "A minimalist blog theme ported from Lagrange to Zola"
 license = "MIT"
 homepage = "https://github.com/LeNPaul/Lagrange"
-min_version = "0.22.1"
+min_version = "0.23.0"
 
 [author]
 name = "Paul Le"
