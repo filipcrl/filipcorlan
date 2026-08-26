@@ -1,45 +1,18 @@
 +++
-title = "Toy ethernet"
-description = "A short walkthrough of turning ideas and projects into a focused personal website."
+title = "Toy Ethernet (WIP)"
+description = "A project for improving my understanding of networking"
 date = 2026-08-20
 
 [taxonomies]
 categories = ["Projects"]
-tags = ["web", "design"]
+tags = ["fpga", "networking"]
 
 [extra]
 image = "cover.png"
 +++
 
-A personal site works best when it has a clear purpose. It does not need to
-contain everything you have ever made; it needs to help visitors understand
-who you are and what you care about.
+I started this project to improve my understanding of computer networking, particularly Ethernet. The source code is available in the [toyethernet repository](https://github.com/filipcrl/toyethernet).
 
-## Start with the content
+I am currently implementing a TCP server in Python, building the network stack from the data link layer upward and exposing it through a virtual network interface. Ethernet and IPv4 support are complete. The TCP server is still in progress, but it can receive data sent through Netcat while keeping track of TCP sequence numbers.
 
-Before choosing colors or typography, decide what the site should communicate.
-A useful first version might contain only three things:
-
-- A short introduction
-- A small selection of projects
-- Articles about subjects you know well
-
-This keeps the structure simple and gives every page a reason to exist.
-
-## Keep assets with their article
-
-This post stores its cover beside the Markdown file:
-
-```text
-content/projects/building-a-personal-site/
-├── index.md
-└── cover.svg
-```
-
-Colocating assets makes an article easy to rename, move, or remove without
-leaving unrelated files elsewhere in the project.
-
-## Publish and iterate
-
-The first version does not need to be final. Publish something focused, learn
-which parts are useful, and improve the site as your work evolves.
+Once the Python implementation is complete, I plan to build a TCP server module for FPGAs. It will use AXI4-Stream input and output interfaces and build on the open-source [verilog-ethernet](https://github.com/alexforencich/verilog-ethernet) project for Ethernet and IP support.
