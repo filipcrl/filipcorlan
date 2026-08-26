@@ -1,15 +1,20 @@
 +++
-title = "Building a Personal Site"
-description = "A short walkthrough of turning ideas and projects into a focused personal website."
-date = 2026-08-20
+title = "fpga breakout board for testing a sensor"
+description = "a small showcase of a breakout board i designed for testing a custom sensor chip"
+date = 2026-08-03
 
 [taxonomies]
 categories = ["Projects"]
-tags = ["web", "design"]
+tags = ["pcb", "fpga"]
 
 [extra]
 image = "cover.png"
 +++
+
+during my time as a reseach asistant at aqua lab I designed a board for testing the a new sensor chip that has been developed.
+this breakout board is intended to be used with the xem7360 module from opal kelly.
+
+
 
 A personal site works best when it has a clear purpose. It does not need to
 contain everything you have ever made; it needs to help visitors understand

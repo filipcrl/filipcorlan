@@ -1,5 +1,5 @@
 +++
-title = "Example Article"
+title = "Designing a 64bit Accumulator"
 description = "An example showing how to structure an article with Zola and Lagrange."
 date = 2026-08-25
 
