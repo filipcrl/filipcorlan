@@ -1,12 +1,11 @@
 {% extends "base.html" %}
-{% import "macros/meta.html" as meta %}
 
 {% block content %}
   <h1>{{ page.title }}</h1>
   {% if page.extra.image %}
-    {% if page.extra.image is starting_with("http://") or page.extra.image is starting_with("https://") or page.extra.image is starting_with("//") %}
+    {% if page.extra.image is starting_with(pat="http://") or page.extra.image is starting_with(pat="https://") or page.extra.image is starting_with(pat="//") %}
       {% set image_url = page.extra.image %}
-    {% elif page.extra.image is starting_with("/") %}
+    {% elif page.extra.image is starting_with(pat="/") %}
       {% set image_url = page.extra.image %}
     {% else %}
       {% set image_url = "/" ~ page.colocated_path ~ page.extra.image %}
@@ -14,7 +13,7 @@
     <img class="post-image" src="{{ image_url | safe }}" alt="">
   {% endif %}
   <article>{{ page.content | safe }}</article>
-  {% if not config.extra.hide_post_date %}{{ meta::post_date(page=page) }}{% endif %}
+  {% if not config.extra.hide_post_date %}{{<meta.post_date page={page} config={config} />}}{% endif %}
   {% if not config.extra.hide_post_share %}{% include "partials/sharing.html" %}{% endif %}
   {% if not config.extra.hide_related_posts %}{% include "partials/related-posts.html" %}{% endif %}
   {% include "partials/disqus.html" %}

@@ -8,7 +8,7 @@
         {% set_global tag_matches = false %}
         {% if candidate.permalink != page.permalink and candidate.taxonomies.tags is defined %}
           {% for tag in page.taxonomies.tags %}
-            {% if candidate.taxonomies.tags is containing(tag) %}{% set_global tag_matches = true %}{% endif %}
+            {% if candidate.taxonomies.tags is containing(pat=tag) %}{% set_global tag_matches = true %}{% endif %}
           {% endfor %}
         {% endif %}
         {% if tag_matches and related_count < 3 %}
