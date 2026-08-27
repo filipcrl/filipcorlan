@@ -1,7 +1,7 @@
 +++
 title = "Toy Ethernet (WIP)"
 description = "A project for improving my understanding of networking"
-date = 2026-08-20
+date = 2026-07-20
 
 [taxonomies]
 categories = ["Projects"]

@@ -1,5 +1,5 @@
 +++
-title = "FPGA Test Board Showcase"
+title = "FPGA Test Board"
 description = "A showcase of a breakout board I designed to test a custom sensor chip"
 date = 2026-08-03
 
