@@ -12,7 +12,8 @@
         {% elif post.extra.image is starting_with(pat="/") %}
           {% set image_url = post.extra.image %}
         {% else %}
-          {% set image_url = "/" ~ post.colocated_path ~ post.extra.image %}
+          {% set resized_image = resize_image(path=post.colocated_path ~ post.extra.image, width=920, op="fit_width") %}
+          {% set image_url = resized_image.url | replace(from=config.base_url, to="") %}
         {% endif %}
         <div class="thumbnail-container"><a href="{{ post.path | safe }}"><img src="{{ image_url | safe }}" alt="" loading="lazy"></a></div>
       {% endif %}
